@@ -13,11 +13,9 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include <stdio.h> //debugging
 # include "includes/libft.h"
 # include <unistd.h>
 # include <math.h>
-# include "minilibx-linux/mlx.h"
 
 typedef struct s_complex
 {
