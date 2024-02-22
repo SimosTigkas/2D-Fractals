@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 18:47:43 by marvin            #+#    #+#             */
-/*   Updated: 2024/02/21 18:47:43 by marvin           ###   ########.fr       */
+/*   Created: 2024/02/22 08:33:05 by stigkas           #+#    #+#             */
+/*   Updated: 2024/02/22 08:33:05 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inlcudes/fractol.h"
 
-int main(int ac, char **av)
+int     main(int ac, char **av)
 {
     if ((ac == 2 && !ft_strncmp(av[1], "mandelbrot", 10))
         || (ac == 4 ) && ft_strcmp(av[1], "julia", 5))
@@ -26,3 +26,6 @@ int main(int ac, char **av)
     }
     return (0);
 }
+
+
+test test
