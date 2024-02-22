@@ -21,11 +21,8 @@ int     main(int ac, char **av)
     }
     else
     {
-        ft_putstr_fd(ERROR_MESSAGE, STERR_FILENO);
+        ft_putstr_fd(ERROR_MESSAGE, 2);
         exit(EXIT_FAILURE);
     }
     return (0);
 }
-
-
-test test
