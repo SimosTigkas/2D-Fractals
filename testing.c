@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:04:23 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/23 19:09:04 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/28 11:28:23 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static mlx_image_t	*image;
 
 int32_t	ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
 {
-    return (r << 24 | g << 8 | b << 16 | a);
+    return (r << 8 | g << 8 | b << 16 | a);
 }
 
 void	ft_randomize(void	*param)
@@ -61,7 +61,7 @@ int32_t	main(void)
 		puts(mlx_strerror(mlx_errno));
 		exit(EXIT_FAILURE);
 	}
-	image = mlx_new_image(mlx, 128, 128);
+	image = mlx_new_image(mlx, 64, 64);
 	if (!(image))
 	{
 		mlx_close_window(mlx);
