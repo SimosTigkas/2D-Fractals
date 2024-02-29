@@ -22,8 +22,8 @@
 
 typedef struct s_complex
 {
-	double	x;
-	double	y;
+	double	real;
+	double	imgnry;
 }	t_complex;
 
 typedef struct s_fractal
@@ -31,9 +31,9 @@ typedef struct s_fractal
 	char		*name;
 	void		*mlx_connection;
 	void		*mlx_window;
-	mlx_image_t	img;
+	mlx_image_t	*img;
 	double		escape_value;
-	int			iterations_defintion;
+	int			iterations_def;
 	double		shift_x;
 	double		shift_y;
 	double		zoom;
@@ -41,7 +41,6 @@ typedef struct s_fractal
 	double		julia_y;
 }	t_fractal;
 
-# define ERROR_MESSAGE "./fractol mandelbrot or ./fractol julia <v1> <v2>"
 # define WIDTH		800
 # define HEIGHT		800
 # define BLACK		0x000000
@@ -58,7 +57,17 @@ typedef struct s_fractal
 # define LIGHT_GRAY	0xD3D3D3FF
 # define DARK_GRAY	0xA9A9A9FF
 
-void	fractal_init(t_fractal	*fractal);
-void	fractal_render(t_fractal	*fractal);
+void		fractal_init(t_fractal	*fractal);
+void		fractal_render(t_fractal	*fractal);
+void		ft_error(void);
+int			valid_args(int ac, char **av, t_fractal *fractal);
+void		check_val(char *str);
+int			is_inrange(double v);
+double		ft_atodbl(double flg, double multiplier, char *str);
+t_complex	complex_sum(t_complex z1, t_complex z2);
+t_complex	complex_squared(t_complex z1);
+double		map(double num, double new_min, double new_max, double old_max);
+void		ft_keyhook(mlx_key_data_t keydata, void *param);
+void		ft_scrollhook(double xdelta, double ydelta, void *param);
 
 #endif
