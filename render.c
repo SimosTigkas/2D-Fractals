@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 14:57:12 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/29 16:21:27 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/03/01 14:38:50 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ void	pixel_handler(int x, int y, t_fractal *fractal)
 		z = complex_sum(complex_squared(z), c);
 		if ((z.real * z.real) + (z.imgnry * z.imgnry) > fractal->escape_value)
 		{
-			color = map(i, BLUE, PURPLE, fractal->iterations_def);
-			mlx_put_pixel(&fractal->img, x, y, color);
+			color = map(i, BLACK, WHITE, fractal->iterations_def);
+			mlx_put_pixel(fractal->img, x, y, color);
 			return ;
 		}
 		i++;
 	}
-	mlx_put_pixel(&fractal->img, x, y, MAGENTA);
+	mlx_put_pixel(fractal->img, x, y, PURPLE);
 }
 
 void	fractal_render(t_fractal	*fractal)
@@ -67,5 +67,5 @@ void	fractal_render(t_fractal	*fractal)
 		}
 		y++;
 	}
-	mlx_image_to_window(fractal->mlx_connection, &fractal->img, 0, 0);
+	mlx_image_to_window(fractal->mlx_connection, fractal->img, 0, 0);
 }

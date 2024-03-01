@@ -26,6 +26,20 @@ typedef struct s_complex
 	double	imgnry;
 }	t_complex;
 
+typedef struct s_param
+{
+	int		type;
+	int		depth;
+	int		iteration;
+	double	width;
+	double	height;
+	double	scale;
+	double	xr;
+	double	yi;
+	double	cr;
+	double	ci;
+}				t_param;
+
 typedef struct s_fractal
 {
 	char		*name;
@@ -39,23 +53,28 @@ typedef struct s_fractal
 	double		zoom;
 	double		julia_x;
 	double		julia_y;
+	t_param		fparam;
 }	t_fractal;
 
-# define WIDTH		800
-# define HEIGHT		800
-# define BLACK		0x000000
-# define WHITE		0xFFFFFF
-# define RED		0xFF0000
-# define GREEN		0x00FF00
-# define BLUE		0x0000FF
-# define YELLOW		0xFFFF00FF
-# define MAGENTA	0xFF00FFFF
-# define CYAN		0x00FFFFFF
-# define ORANGE		0xFFA500FF
-# define PURPLE		0x660066FF
-# define GRAY		0x808080FF
-# define LIGHT_GRAY	0xD3D3D3FF
-# define DARK_GRAY	0xA9A9A9FF
+# define WIDTH				800
+# define HEIGHT				800
+# define BLACK				0x000000
+# define WHITE				0xFFFFFF
+# define RED				0xFF0000
+# define GREEN				0x00FF00
+# define BLUE				0x0000FF
+# define YELLOW				0xFFFF00FF
+# define MAGENTA			0xFF00FFFF
+# define CYAN				0x00FFFFFF
+# define ORANGE				0xFFA500FF
+# define PURPLE				0x660066FF
+# define GRAY				0x808080FF
+# define LIGHT_GRAY			0xD3D3D3FF
+# define DARK_GRAY			0xA9A9A9FF
+# define MAGENTA_BURST   	0xFF00FF
+# define AQUA_DREAM      	0x33CCCC
+# define HOT_PINK        	0xFF66B2
+# define ELECTRIC_BLUE   	0x0066FF
 
 void		fractal_init(t_fractal	*fractal);
 void		fractal_render(t_fractal	*fractal);
@@ -69,5 +88,7 @@ t_complex	complex_squared(t_complex z1);
 double		map(double num, double new_min, double new_max, double old_max);
 void		ft_keyhook(mlx_key_data_t keydata, void *param);
 void		ft_scrollhook(double xdelta, double ydelta, void *param);
+void		zoom_in(int x, int y, t_fractal *f);
+void		zoom_out(int x, int y, t_fractal *f);
 
 #endif

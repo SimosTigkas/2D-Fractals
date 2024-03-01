@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:40:32 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/29 16:42:27 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/03/01 13:55:46 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,10 @@ void	check_val(char *str)
 		}
 		if (str[i] == '+' || str[i] == '-')
 		{
-			if ((i != 0) || !ft_is_digit(str[i + 1]))
+			if ((i != 0) || (str[i + 1] < '0' && str[i + 1] > '9'))
 				ft_error();
 		}
-		else if (!ft_isdigit(str[i++]))
+		else if (str[i + 1] < '0' && str[i + 1] > '9')
 			ft_error();
 	}
 	if (is_inrange(ft_atodbl(0.0, 0.0, str)) == 0)
