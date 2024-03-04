@@ -26,20 +26,6 @@ typedef struct s_complex
 	double	imgnry;
 }	t_complex;
 
-typedef struct s_param
-{
-	int		type;
-	int		depth;
-	int		iteration;
-	double	width;
-	double	height;
-	double	scale;
-	double	xr;
-	double	yi;
-	double	cr;
-	double	ci;
-}				t_param;
-
 typedef struct s_fractal
 {
 	char		*name;
@@ -53,7 +39,6 @@ typedef struct s_fractal
 	double		zoom;
 	double		julia_x;
 	double		julia_y;
-	t_param		fparam;
 }	t_fractal;
 
 # define WIDTH				800
@@ -80,15 +65,15 @@ void		fractal_init(t_fractal	*fractal);
 void		fractal_render(t_fractal	*fractal);
 void		ft_error(void);
 int			valid_args(int ac, char **av, t_fractal *fractal);
-void		check_val(char *str);
+// void		check_val(char *str);
 int			is_inrange(double v);
-double		ft_atodbl(double flg, double multiplier, char *str);
+double		ft_atodbl(char *str);
 t_complex	complex_sum(t_complex z1, t_complex z2);
 t_complex	complex_squared(t_complex z1);
 double		map(double num, double new_min, double new_max, double old_max);
 void		ft_keyhook(mlx_key_data_t keydata, void *param);
 void		ft_scrollhook(double xdelta, double ydelta, void *param);
-void		zoom_in(int x, int y, t_fractal *f);
-void		zoom_out(int x, int y, t_fractal *f);
+void		zoom_in(t_fractal *f);
+void		zoom_out(t_fractal *f);
 
 #endif

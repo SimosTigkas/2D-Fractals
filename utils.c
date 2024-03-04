@@ -6,36 +6,38 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:40:32 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/01 13:55:46 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/03/04 12:06:46 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fractol.h"
 
-double	ft_atodbl(double flg, double multiplier, char *str)
+double	ft_atodbl(char *str)
 {
+	double	number;
+	int		signal;
 	int		i;
 	double	n;
 
-	i = 0.0;
-	n = 0.0;
-	if (str[i] == '-')
-		multiplier -= 1.0;
+	signal = 1;
+	number = 0;
+	n = 1;
+	i = 0;
 	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str)
 	{
-		if (str[i] == '.')
-			flg = 1.0;
-		if (str[i] >= '0' && str[i] <= '9')
-		{
-			if (flg == 1.0)
-				multiplier /= 10.00;
-			n = (n * 10.00) + (str[i] - '0');
-		}
-		i++;
+		if (str[i++] == '-')
+			signal = -1;
 	}
-	return (multiplier * n);
+	while ((str[i] >= '0' && str[i] <= '9') && str[i] != '\0' )
+		number = number * 10 + (str[i++] - '0');
+	if (str[i] == '.')
+		i++;
+	while ((str[i] >= '0' && str[i] <= '9') && str[i] != '\0')
+	{
+		number = number + (str[i++] - '0') * 0.1 * n;
+		n /= 10;
+	}
+	return ((number) * signal);
 }
 
 void	ft_error(void)
@@ -54,31 +56,31 @@ int	is_inrange(double v)
 		return (0);
 }
 
-void	check_val(char *str)
-{
-	int	i;
-	int	j;
+// void	check_val(char *str)
+// {
+// 	int	i;
+// 	int	j;
 
-	i = 0;
-	j = 0;
-	while (str)
-	{
-		if (str[i] == '.')
-		{
-			while (j < i)
-			{
-				if (str[j++] == '.')
-					ft_error();
-			}
-		}
-		if (str[i] == '+' || str[i] == '-')
-		{
-			if ((i != 0) || (str[i + 1] < '0' && str[i + 1] > '9'))
-				ft_error();
-		}
-		else if (str[i + 1] < '0' && str[i + 1] > '9')
-			ft_error();
-	}
-	if (is_inrange(ft_atodbl(0.0, 0.0, str)) == 0)
-		ft_error();
-}
+// 	i = 0;
+// 	j = 0;
+// 	while (str)
+// 	{
+// 		if (str[i] == '.')
+// 		{
+// 			while (j < i)
+// 			{
+// 				if (str[j++] == '.')
+// 					ft_error();
+// 			}
+// 		}
+// 		if (str[i] == '+' || str[i] == '-')
+// 		{
+// 			if ((i != 0) || (str[i + 1] < '0' && str[i + 1] > '9'))
+// 				ft_error();
+// 		}
+// 		else if (str[i + 1] < '0' && str[i + 1] > '9')
+// 			ft_error();
+// 	}
+// 	if (is_inrange(ft_atodbl(str)) == 0)
+// 		ft_error();
+// }

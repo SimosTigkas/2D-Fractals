@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 12:34:38 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/01 14:52:02 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/03/04 12:33:25 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	get_values(t_fractal	*fractal)
 {
 	fractal->escape_value = 4.0;
-	fractal->iterations_def = 400;
-	fractal->shift_x = 0.0;
+	fractal->iterations_def = 800;
+	fractal->shift_x = -1.4186;
 	fractal->shift_y = 0.0;
 	fractal->zoom = 1.2;
 }
@@ -29,11 +29,9 @@ int	valid_args(int ac, char **av, t_fractal *fractal)
 			fractal->name = av[1];
 		else if ((ac == 4) && !ft_strncmp(av[1], "julia", 5))
 		{
-			check_val(av[2]);
-			check_val(av[3]);
 			fractal->name = av[1];
-			fractal->julia_x = ft_atodbl(0.0, 0.0, av[2]);
-			fractal->julia_y = ft_atodbl(0.0, 0.0, av[3]);
+			fractal->julia_x = ft_atodbl(av[2]);
+			fractal->julia_y = ft_atodbl(av[3]);
 		}
 	}
 	else

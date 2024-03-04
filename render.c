@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 14:57:12 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/01 14:38:50 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/03/04 12:18:17 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	choose_fractal(t_complex *z, t_complex *c, t_fractal *fractal)
 	{
 		c->real = fractal->julia_x;
 		c->imgnry = fractal->julia_y;
+		fractal->shift_x = 0.5;
+		fractal->shift_y = 0.2;
 	}
 }
 
@@ -48,7 +50,7 @@ void	pixel_handler(int x, int y, t_fractal *fractal)
 		}
 		i++;
 	}
-	mlx_put_pixel(fractal->img, x, y, PURPLE);
+	mlx_put_pixel(fractal->img, x, y, MAGENTA_BURST);
 }
 
 void	fractal_render(t_fractal	*fractal)

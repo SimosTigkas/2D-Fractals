@@ -6,36 +6,22 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 16:36:40 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/01 15:15:01 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/03/04 11:16:47 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fractol.h"
 
-void	zoom_in(int x, int y, t_fractal *f)
+void	zoom_in(t_fractal *f)
 {
-	double	scale;
-
-	scale = 4.0;
-	scale = f->fparam.scale * f->zoom;
-	f->fparam.xr = ((double)x / f->fparam.scale + f->fparam.xr) \
-									-(double)x / scale;
-	f->fparam.yi = ((double)y / f->fparam.scale + f->fparam.yi) \
-									-(double)y / scale;
-	f->fparam.scale += 2;
+	f->zoom *= 3;
+	fractal_render(f);
 }
 
-void	zoom_out(int x, int y, t_fractal *f)
+void	zoom_out(t_fractal *f)
 {
-	double	scale;
-
-	scale = 4.0;
-	scale = f->fparam.scale * f->zoom;
-	f->fparam.xr = ((double)x / f->fparam.scale + f->fparam.xr) \
-									-(double)x / scale;
-	f->fparam.yi = ((double)y / f->fparam.scale + f->fparam.yi) \
-									-(double)y / scale;
-	f->fparam.scale -= 2;
+	f->zoom /= 3;
+	fractal_render(f);
 }
 
 void	ft_keyhook(mlx_key_data_t keydata, void *param)
@@ -51,17 +37,11 @@ void	ft_keyhook(mlx_key_data_t keydata, void *param)
 void	ft_scrollhook(double xdelta, double ydelta, void *param)
 {
 	t_fractal	*fractal;
-	int			x;
-	int			y;
 
 	fractal = param;
-	x = 0;
-	y = 0;
 	if (ydelta > 0 || xdelta > 0)
-		zoom_in(x, y, fractal);
+		zoom_in(fractal);
 	else if (ydelta < 0 || xdelta < 0)
-		zoom_out(x, y, fractal);
-	fractal->fparam.height = 0;
-	fractal->fparam.width = 0;
+		zoom_out(fractal);
 	fractal_render(fractal);
 }
