@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 16:36:40 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/04 11:16:47 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/03/04 18:21:24 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,15 @@ void	ft_keyhook(mlx_key_data_t keydata, void *param)
 	(void)keydata;
 	if (mlx_is_key_down(fractal->mlx_connection, MLX_KEY_ESCAPE))
 		mlx_close_window(fractal->mlx_connection);
+	else if (mlx_is_key_down(fractal->mlx_connection, MLX_KEY_UP))
+		fractal->shift_y -= 0.05;
+	else if (mlx_is_key_down(fractal->mlx_connection, MLX_KEY_DOWN))
+		fractal->shift_y += 0.05;
+	else if (mlx_is_key_down(fractal->mlx_connection, MLX_KEY_LEFT))
+		fractal->shift_x += 0.05;
+	else if (mlx_is_key_down(fractal->mlx_connection, MLX_KEY_RIGHT))
+		fractal->shift_x -= 0.05;
+	fractal_render(fractal);
 }
 
 void	ft_scrollhook(double xdelta, double ydelta, void *param)

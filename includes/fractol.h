@@ -40,8 +40,8 @@ typedef struct s_fractal
 	double		julia_y;
 }	t_fractal;
 
-# define WIDTH				800
-# define HEIGHT				800
+# define WIDTH				600
+# define HEIGHT				600
 # define MAX_ITERATIONS		60
 # define BLACK				0x000000
 # define WHITE				0xFFFFFF
@@ -74,5 +74,8 @@ void		ft_keyhook(mlx_key_data_t keydata, void *param);
 void		ft_scrollhook(double xdelta, double ydelta, void *param);
 void		zoom_in(t_fractal *f);
 void		zoom_out(t_fractal *f);
+double		my_abs(double x);
+t_complex	ship_squared(t_complex z1);
+t_complex	ship_sum(t_complex z1, t_complex z2);
 
 #endif

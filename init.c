@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 12:34:38 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/04 15:24:28 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/03/04 18:32:19 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	get_values(t_fractal	*fractal)
 {
 	fractal->escape_value = 4.0;
-	fractal->iterations_def = 800;
-	fractal->shift_x = -1.4186;
+	fractal->iterations_def = 400;
+	fractal->shift_x = -0.45;
 	fractal->shift_y = 0.0;
 	fractal->zoom = 1.2;
 }
@@ -32,6 +32,11 @@ int	valid_args(int ac, char **av, t_fractal *fractal)
 			fractal->name = av[1];
 			fractal->julia_x = ft_atodbl(av[2]);
 			fractal->julia_y = ft_atodbl(av[3]);
+		}
+		else if ((ac == 2) && !ft_strncmp(av[1], "burningship", 11))
+		{
+			fractal->iterations_def = MAX_ITERATIONS;
+			fractal->name = av[1];
 		}
 	}
 	else
