@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/29 14:57:12 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/04 15:27:29 by stigkas          ###   ########.fr       */
+/*   Created: 2024/03/04 15:00:44 by stigkas           #+#    #+#             */
+/*   Updated: 2024/03/04 15:28:07 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/fractol.h"
+#include "includes/fractol_bonus.h"
 
 double	my_abs(double x)
 {
@@ -49,7 +49,10 @@ void	pixel_handler(int x, int y, t_fractal *fractal)
 	choose_fractal(&z, &c, fractal);
 	while (i < fractal->iterations_def)
 	{
-		z = complex_sum(complex_squared(z), c);
+		if (!ft_strncmp(fractal->name, "burningship", 11))
+			z = ship_sum(ship_squared(z), c);
+		else
+			z = complex_sum(complex_squared(z), c);
 		if ((z.real * z.real) + (z.imgnry * z.imgnry) > fractal->escape_value)
 		{
 			color = map(i, BLACK, WHITE, fractal->iterations_def);
@@ -78,4 +81,24 @@ void	fractal_render(t_fractal	*fractal)
 		y++;
 	}
 	mlx_image_to_window(fractal->mlx_connection, fractal->img, 0, 0);
+}
+
+int	burning_ship(double x, double y)
+{
+	int		iterations;
+	double	real;
+	double	imag;
+	double	real_temp;
+
+	iterations = 0;
+	real = x;
+	imag = y;
+	while (iterations < MAX_ITERATIONS && (real * real + imag * imag) < 4.0)
+	{
+		real_temp = real * real - imag * imag + x;
+		imag = 2.0 * my_abs(real * imag) + y;
+		real = real_temp;
+		iterations++;
+	}
+	return (iterations);
 }

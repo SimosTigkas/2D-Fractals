@@ -17,7 +17,6 @@
 # include <unistd.h>
 # include <math.h>
 # include "../MLX42/include/MLX42/MLX42.h"
-# include <stdio.h>
 # include <stdlib.h>
 
 typedef struct s_complex
@@ -43,6 +42,7 @@ typedef struct s_fractal
 
 # define WIDTH				800
 # define HEIGHT				800
+# define MAX_ITERATIONS		60
 # define BLACK				0x000000
 # define WHITE				0xFFFFFF
 # define RED				0xFF0000
@@ -65,7 +65,6 @@ void		fractal_init(t_fractal	*fractal);
 void		fractal_render(t_fractal	*fractal);
 void		ft_error(void);
 int			valid_args(int ac, char **av, t_fractal *fractal);
-// void		check_val(char *str);
 int			is_inrange(double v);
 double		ft_atodbl(char *str);
 t_complex	complex_sum(t_complex z1, t_complex z2);

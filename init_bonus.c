@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 12:34:38 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/04 15:24:28 by stigkas          ###   ########.fr       */
+/*   Created: 2024/03/04 15:01:30 by stigkas           #+#    #+#             */
+/*   Updated: 2024/03/04 15:24:00 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/fractol.h"
+#include "includes/fractol_bonus.h"
 
 void	get_values(t_fractal	*fractal)
 {
@@ -32,6 +32,11 @@ int	valid_args(int ac, char **av, t_fractal *fractal)
 			fractal->name = av[1];
 			fractal->julia_x = ft_atodbl(av[2]);
 			fractal->julia_y = ft_atodbl(av[3]);
+		}
+		else if ((ac == 2) && !ft_strncmp(av[1], "burningship", 11))
+		{
+			fractal->iterations_def = MAX_ITERATIONS;
+			fractal->name = av[1];
 		}
 	}
 	else
