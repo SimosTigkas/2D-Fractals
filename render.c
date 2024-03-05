@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 14:57:12 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/04 18:15:03 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/03/05 16:58:04 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	choose_fractal(t_complex *z, t_complex *c, t_fractal *fractal)
 	}
 	else
 	{
-		// fractal->shift_x = -1.4186;
 		c->real = z->real;
 		c->imgnry = z->imgnry;
 	}

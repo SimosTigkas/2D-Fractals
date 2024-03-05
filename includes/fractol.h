@@ -61,12 +61,12 @@ typedef struct s_fractal
 # define HOT_PINK        	0xFF66B2
 # define ELECTRIC_BLUE   	0x0066FF
 
-void		fractal_init(t_fractal	*fractal);
+void		fractal_init(t_fractal *fractal, int ac, char **av);
 void		fractal_render(t_fractal	*fractal);
 void		ft_error(void);
-int			valid_args(int ac, char **av, t_fractal *fractal);
+int			valid_args(int ac, char **av, int is_valid);
 int			is_inrange(double v);
-double		ft_atodbl(char *str);
+double		ft_atodbl(char *str, double n);
 t_complex	complex_sum(t_complex z1, t_complex z2);
 t_complex	complex_squared(t_complex z1);
 double		map(double num, double new_min, double new_max, double old_max);
@@ -77,5 +77,10 @@ void		zoom_out(t_fractal *f);
 double		my_abs(double x);
 t_complex	ship_squared(t_complex z1);
 t_complex	ship_sum(t_complex z1, t_complex z2);
+int			check_julia(char **av);
+void		get_values(t_fractal	*fractal, int ac, char **av);
+int			ft_strcmp(char *s1, char *s2);
+void		name_error(void);
+void		arg_count_error(void);
 
 #endif
