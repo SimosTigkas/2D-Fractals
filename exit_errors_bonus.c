@@ -1,56 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_errors.c                                      :+:      :+:    :+:   */
+/*   exit_errors_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/05 11:35:18 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/06 13:57:09 by stigkas          ###   ########.fr       */
+/*   Created: 2024/03/06 10:45:45 by stigkas           #+#    #+#             */
+/*   Updated: 2024/03/06 13:43:06 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/fractol.h"
+#include "./includes/fractol_bonus.h"
 
-void	arg_count_error(void)
-{
-	ft_putendl_fd("Error: Too few arguments", 2);
-	ft_putendl_fd("Please use: ./fractol julia <x> <y>", 2);
-}
-
-int	check_julia(char **av)
-{
-	int		is_valid;
-	double	num1;
-	double	num2;
-
-	is_valid = 1;
-	num1 = ft_atodbl(av[2], 1);
-	num2 = ft_atodbl(av[3], 1);
-	if (num1 == -42.0 || num2 == -42.0)
-		is_valid = 0;
-	if (num1 < -2.0 || num1 > 2.0)
-		is_valid = 0;
-	if (num2 < -2.0 || num2 > 2.0)
-		is_valid = 0;
-	return (is_valid);
-}
-
-void	name_error(void)
+void	name_error_bonus(void)
 {
 	ft_putendl_fd("Error: Invalid fractal name", 2);
 	ft_putstr_fd("Please use: ./fractol mandelbrot", 2);
+	ft_putendl_fd(" or ./fractol burningship", 2);
 }
 
-void	ft_error(void)
+void	ft_error_bonus(void)
 {
 	ft_putendl_fd("Error: Invalid arguments", 2);
 	ft_putstr_fd("Please use: ./fractol mandelbrot or", 2);
 	ft_putstr_fd(" ./fractol julia <x> <y>", 2);
+	ft_putendl_fd(" or ./fractol burningship", 2);
 	exit(EXIT_FAILURE);
 }
 
-int	valid_args(int ac, char **av, int is_valid)
+int	valid_args_bonus(int ac, char **av, int is_valid)
 {
 	if (ac == 2)
 	{
@@ -58,10 +36,10 @@ int	valid_args(int ac, char **av, int is_valid)
 			arg_count_error();
 		else if (!ft_strcmp(av[1], "mandelbrot"))
 			is_valid = 1;
-		// else if (!ft_strcmp(av[1], "burningship"))
-		// 	is_valid = 1;
+		else if (!ft_strcmp(av[1], "burningship"))
+			is_valid = 1;
 		else
-			name_error();
+			name_error_bonus();
 	}
 	else if (ac == 4)
 	{

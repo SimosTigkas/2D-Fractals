@@ -42,7 +42,6 @@ typedef struct s_fractal
 
 # define WIDTH				600
 # define HEIGHT				600
-# define MAX_ITERATIONS		60
 # define BLACK				0x000000
 # define WHITE				0xFFFFFF
 # define RED				0xFF0000
@@ -65,7 +64,6 @@ void		fractal_init(t_fractal *fractal, int ac, char **av);
 void		fractal_render(t_fractal	*fractal);
 void		ft_error(void);
 int			valid_args(int ac, char **av, int is_valid);
-int			is_inrange(double v);
 double		ft_atodbl(char *str, double n);
 t_complex	complex_sum(t_complex z1, t_complex z2);
 t_complex	complex_squared(t_complex z1);
@@ -74,9 +72,6 @@ void		ft_keyhook(mlx_key_data_t keydata, void *param);
 void		ft_scrollhook(double xdelta, double ydelta, void *param);
 void		zoom_in(t_fractal *f);
 void		zoom_out(t_fractal *f);
-double		my_abs(double x);
-t_complex	ship_squared(t_complex z1);
-t_complex	ship_sum(t_complex z1, t_complex z2);
 int			check_julia(char **av);
 void		get_values(t_fractal	*fractal, int ac, char **av);
 int			ft_strcmp(char *s1, char *s2);

@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 15:00:44 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/04 15:28:07 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/03/06 11:57:53 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void	choose_fractal(t_complex *z, t_complex *c, t_fractal *fractal)
 	{
 		c->real = fractal->julia_x;
 		c->imgnry = fractal->julia_y;
-		fractal->shift_x = 0.5;
-		fractal->shift_y = 0.2;
 	}
 	else
 	{
@@ -49,7 +47,7 @@ void	pixel_handler(int x, int y, t_fractal *fractal)
 	choose_fractal(&z, &c, fractal);
 	while (i < fractal->iterations_def)
 	{
-		if (!ft_strncmp(fractal->name, "burningship", 11))
+		if (!ft_strcmp(fractal->name, "burningship"))
 			z = ship_sum(ship_squared(z), c);
 		else
 			z = complex_sum(complex_squared(z), c);
@@ -61,7 +59,7 @@ void	pixel_handler(int x, int y, t_fractal *fractal)
 		}
 		i++;
 	}
-	mlx_put_pixel(fractal->img, x, y, MAGENTA_BURST);
+	mlx_put_pixel(fractal->img, x, y, CYAN);
 }
 
 void	fractal_render(t_fractal	*fractal)
@@ -81,24 +79,4 @@ void	fractal_render(t_fractal	*fractal)
 		y++;
 	}
 	mlx_image_to_window(fractal->mlx_connection, fractal->img, 0, 0);
-}
-
-int	burning_ship(double x, double y)
-{
-	int		iterations;
-	double	real;
-	double	imag;
-	double	real_temp;
-
-	iterations = 0;
-	real = x;
-	imag = y;
-	while (iterations < MAX_ITERATIONS && (real * real + imag * imag) < 4.0)
-	{
-		real_temp = real * real - imag * imag + x;
-		imag = 2.0 * my_abs(real * imag) + y;
-		real = real_temp;
-		iterations++;
-	}
-	return (iterations);
 }

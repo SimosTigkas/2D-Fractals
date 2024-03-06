@@ -14,9 +14,17 @@ SRCS = \
 	render.c \
 	utils.c \
 	exit_errors.c
+SRCS_BONUS = \
+	complex_utils_bonus.c \
+	fractol_bonus.c \
+	hooks_bonus.c \
+	init_bonus.c \
+	render_bonus.c \
+	utils_bonus.c \
+	exit_errors_bonus.c
 
 OBJS = $(SRCS:.c=.o)
-# BONUS_OBJ = $(SRCS_BONUS:.c=.o)
+BONUS_OBJ = $(SRCS_BONUS:.c=.o)
 RM = rm -f
 
 all: libmlx $(NAME)
@@ -24,17 +32,21 @@ all: libmlx $(NAME)
 libmlx:
 	@cmake $(LIBMLX_PATH) -B $(LIBMLX_PATH)/build && make -C $(LIBMLX_PATH)/build -j4
 
-$(NAME): $(LIBMLX) $(SRCS)
+$(NAME): $(LIBMLX) $(SRCS) $(OBJS)
 	cd libfta && $(MAKE)
 	cc $(CFLAGS) $(HEADERS) $(SRCS) $(LIBS) -o $(NAME)
 
-%.o: %.c
-	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)"
+$(OBJS): %.o: %.c
+	$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
+
+$(BONUS_OBJ): %.o: %.c
+	$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
 
 clean:
 	@rm -rf $(OBJS)
 	@rm -rf $(LIBMLX_PATH)/build
 	cd $(LIBFTA_PATH) && make clean
+	@rm -f $(BONUS_OBJ) .bonus
 
 fclean: clean
 	@rm -rf $(NAME)
@@ -42,8 +54,10 @@ fclean: clean
 
 re: fclean all
 
-# bonus: $(NAME) $(BONUS_OBJ)
-# 	ar crs $(BONUS_OBJ)
-# 	cd $(LIBFTA_PATH) && make bonus
+bonus: .bonus
 
-.PHONY: all clean fclean re libmlx #bonus
+.bonus: libmlx $(NAME) $(BONUS_OBJ)
+	cd $(LIBFTA_PATH) && make bonus
+	@touch .bonus
+
+.PHONY: all clean fclean re libmlx bonus
