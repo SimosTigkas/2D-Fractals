@@ -1,21 +1,28 @@
 ### Fract'ol - Computer Graphics Fractals
 
-##Description
+## Description
 Fract'ol is a project focused on creating a small fractal exploration program in C using the MiniLibX library. This program allows you to explore and visualize famous fractals such as the Julia set and the Mandelbrot set. Fractals are fascinating mathematical objects that exhibit self-similar patterns at every scale.
 
 ##Installation
+
 Clone the repository to your local machine:
 ```bash```
+
 Copy code
 ```git clone <repository_url>```
+
 Compile the project using the provided Makefile:
 ```bash```
+
 Copy code
 ```make```
+
 Run the program with the desired fractal type and options:
 ```bash```
+
 Copy code
 ```./fractol [fractal_type] [options]```
+
 If no parameters are provided or if the parameter is invalid, the program will display a list of available parameters and exit.
 
 ## Usage
