@@ -12,6 +12,7 @@
 
 #include "includes/fractol.h"
 
+
 t_complex	complex_sum(t_complex z1, t_complex z2)
 {
 	t_complex	res;

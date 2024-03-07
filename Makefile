@@ -1,11 +1,19 @@
 NAME = fractol
+
 LIBMLX_PATH = ./MLX42
+
 LIBMLX = $(LIBMLX_PATH)/build/libmlx42.a
+
 LIBFTA_PATH = ./libfta
+
 LIBFTA = $(LIBFTA_PATH)/libft.a
+
 CFLAGS = -Wall -Wextra -Werror -Wunreachable-code -Ofast
+
 HEADERS = -I ./incudes -I ./include -I $(LIBMLX_PATH)/include/ -I "/Users/stigkas/.brew/opt/glfw/include"
+
 LIBS = $(LIBFTA) $(LIBMLX) -L/Users/stigkas/.brew/lib/ -ldl -lglfw -pthread -lm
+
 SRCS = \
 	complex_utils.c \
 	fractol.c \
@@ -16,6 +24,7 @@ SRCS = \
 	exit_errors.c
 
 OBJS = $(SRCS:.c=.o)
+
 RM = rm -f
 
 all: libmlx $(NAME)

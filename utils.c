@@ -12,6 +12,7 @@
 
 #include "includes/fractol.h"
 
+
 double	ft_atodbl(char *str, double n)
 {
 	double	number;

@@ -12,6 +12,7 @@
 
 #include "includes/fractol.h"
 
+
 void	get_values(t_fractal	*fractal, int ac, char **av)
 {
 	fractal->escape_value = 4.0;

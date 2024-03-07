@@ -12,6 +12,7 @@
 
 #include "./includes/fractol.h"
 
+
 void	arg_count_error(void)
 {
 	ft_putendl_fd("Error: Too few arguments", 2);

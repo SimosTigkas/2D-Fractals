@@ -12,6 +12,7 @@
 
 #include "includes/fractol.h"
 
+
 double	my_abs(double x)
 {
 	if (x < 0)

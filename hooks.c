@@ -12,6 +12,7 @@
 
 #include "includes/fractol.h"
 
+
 void	zoom_in(t_fractal *f)
 {
 	f->zoom *= 3;
