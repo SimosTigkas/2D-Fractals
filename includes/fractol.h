@@ -59,6 +59,7 @@ typedef struct s_fractal
 # define AQUA_DREAM      	0x33CCCC
 # define HOT_PINK        	0xFF66B2
 # define ELECTRIC_BLUE   	0x0066FF
+# define MAX_ITERATIONS		60
 
 void		fractal_init(t_fractal *fractal, int ac, char **av);
 void		fractal_render(t_fractal	*fractal);
@@ -77,5 +78,8 @@ void		get_values(t_fractal	*fractal, int ac, char **av);
 int			ft_strcmp(char *s1, char *s2);
 void		name_error(void);
 void		arg_count_error(void);
+double		my_abs(double x);
+t_complex	ship_squared(t_complex z1);
+t_complex	ship_sum(t_complex z1, t_complex z2);
 
 #endif

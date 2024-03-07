@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 14:57:12 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/06 10:58:52 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/03/07 10:33:02 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ void	pixel_handler(int x, int y, t_fractal *fractal)
 	choose_fractal(&z, &c, fractal);
 	while (i < fractal->iterations_def)
 	{
-		// if (!ft_strncmp(fractal->name, "burningship", 11))
-		// 	z = ship_sum(ship_squared(z), c);
-		// else
-		z = complex_sum(complex_squared(z), c);
+		if (!ft_strcmp(fractal->name, "burningship"))
+			z = ship_sum(ship_squared(z), c);
+		else
+			z = complex_sum(complex_squared(z), c);
 		if ((z.real * z.real) + (z.imgnry * z.imgnry) > fractal->escape_value)
 		{
 			color = map(i, BLACK, WHITE, fractal->iterations_def);

@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:35:18 by stigkas           #+#    #+#             */
-/*   Updated: 2024/03/06 13:57:09 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/03/07 10:23:57 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	name_error(void)
 {
 	ft_putendl_fd("Error: Invalid fractal name", 2);
 	ft_putstr_fd("Please use: ./fractol mandelbrot", 2);
+	ft_putendl_fd(" or ./fractol burningship", 2);
 }
 
 void	ft_error(void)
@@ -47,6 +48,7 @@ void	ft_error(void)
 	ft_putendl_fd("Error: Invalid arguments", 2);
 	ft_putstr_fd("Please use: ./fractol mandelbrot or", 2);
 	ft_putstr_fd(" ./fractol julia <x> <y>", 2);
+	ft_putendl_fd(" or ./fractol burningship", 2);
 	exit(EXIT_FAILURE);
 }
 
@@ -58,8 +60,8 @@ int	valid_args(int ac, char **av, int is_valid)
 			arg_count_error();
 		else if (!ft_strcmp(av[1], "mandelbrot"))
 			is_valid = 1;
-		// else if (!ft_strcmp(av[1], "burningship"))
-		// 	is_valid = 1;
+		else if (!ft_strcmp(av[1], "burningship"))
+			is_valid = 1;
 		else
 			name_error();
 	}
