@@ -35,8 +35,10 @@ Psychedelic effects can be achieved for added visual appeal.
 ## Examples
 
 ```./fractol mandelbrot```
+
 <img src="./examples/Mandelbrot.png" alt="Screenshot" width="400">
 
 ```./fractol julia -0.7269 0.1889```
+
 <img src="./examples/Julia0726901889.png" alt="Screenshot" width="400">
 
