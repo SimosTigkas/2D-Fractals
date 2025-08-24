@@ -31,3 +31,10 @@ Supported Fractals
 Smooth window management for a seamless user experience.
 Use of colors to display the depth of each fractal.
 Psychedelic effects can be achieved for added visual appeal.
+
+## Examples
+
+<img src="./examples/mandelbrot.png" alt="Screenshot" width="400">
+<img src="./examples/Julia0726901889.png" alt="Screenshot" width="400">
+
+
