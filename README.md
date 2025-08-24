@@ -42,3 +42,7 @@ Psychedelic effects can be achieved for added visual appeal.
 
 <img src="./examples/Julia0726901889.png" alt="Screenshot" width="400">
 
+```./fractol burningship```
+
+<img src="./examples/BurningShip.png" alt="Screenshot" width="400">
+
