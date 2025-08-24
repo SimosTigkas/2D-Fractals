@@ -34,7 +34,7 @@ Psychedelic effects can be achieved for added visual appeal.
 
 ## Examples
 
-<img src="./examples/mandelbrot.png" alt="Screenshot" width="400">
+<img src="./examples/Mandelbrot.png" alt="Screenshot" width="400">
 <img src="./examples/Julia0726901889.png" alt="Screenshot" width="400">
 
 
