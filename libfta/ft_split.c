@@ -45,7 +45,7 @@ static size_t	get_word_len(char const *s, char c)
 
 static void	free_array(size_t i, char **res)
 {
-	while (i >= 0)
+	while (i > 0)
 	{
 		free(*(res + i));
 		i--;

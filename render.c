@@ -54,7 +54,7 @@ void	pixel_handler(int x, int y, t_fractal *fractal)
 			z = complex_sum(complex_squared(z), c);
 		if ((z.real * z.real) + (z.imgnry * z.imgnry) > fractal->escape_value)
 		{
-			color = map(i, BLACK, WHITE, fractal->iterations_def);
+			color = map(i, BLUE, RED, fractal->iterations_def);
 			mlx_put_pixel(fractal->img, x, y, color);
 			return ;
 		}
